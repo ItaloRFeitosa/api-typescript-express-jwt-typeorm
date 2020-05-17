@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+    
+    env_file: 
+      - ./.env
+
+    ports:
+      - "5432:5432"
+    volumes:
+      - data-postgresql:/var/lib/postgresql
+    networks:
+      - postgres-network
+      
+  db_pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "italo85199@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "pgadmin"
+    ports:
+      - "15432:80"
+    depends_on:
+      - db
+    networks:
+      - postgres-network
+
+volumes:
+  data-postgresql:
+    external: true
+
+networks: 
+  postgres-network:
+    driver: bridge
