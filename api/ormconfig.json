@@ -4,5 +4,21 @@
   "port": 5432,
   "username": "postgres",
   "password": "postgres",
-  "database": "db-auth-jwt"
+  "database": "db-fullstack-typescript",
+  "synchronize": true,
+
+  "entities": [
+    "src/entity/*.ts"
+  ],
+  "subscribers": [
+    "src/subscriber/*.ts"
+  ],
+  "migrations": [
+    "src/migration/*.ts"
+  ],
+  "cli": {
+    "entitiesDir": "src/entity",
+    "migrationsDir": "src/migration",
+    "subscribersDir": "src/subscriber"
+  }
 }
