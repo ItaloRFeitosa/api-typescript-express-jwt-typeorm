@@ -5,7 +5,7 @@ import helmet from "helmet";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
-import IRoutes from './routes/IRoutes';
+import {IRoutes} from './interfaces';
 
 export default class App {
   private app: Application;

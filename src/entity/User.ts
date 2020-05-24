@@ -31,7 +31,7 @@ export class User extends BaseEntity {
     enum: UserRole,
     default: UserRole.BASIC
   })
-  userRole: UserRole
+  role: UserRole
 
   @Column()
   @CreateDateColumn()
@@ -48,7 +48,6 @@ export class User extends BaseEntity {
 
   async checkPassword(plainPassword: string){
     const checked = await bcrypt.compare(plainPassword, this.password);
-    this.hidePassword();
     return checked;
   }
 

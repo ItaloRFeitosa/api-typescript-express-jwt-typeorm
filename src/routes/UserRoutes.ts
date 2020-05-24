@@ -1,24 +1,25 @@
 import {Router, Request, Response} from 'express';
 
-import IRoutes from './IRoutes';
+import {IRoutes} from '../interfaces';
 
 import UserController from '../controllers/UserController'
 
 import isAuthenticated from '../middlewares/isAuthenticated';
+import isAllowed from '../middlewares/isAllowed';
+import UserRole from '../config/UserRole';
 
 export default class UserRoutes implements IRoutes {
-  public path = "/users";
+  readonly path = "/users";
 
-  public router =  Router();
+  readonly router =  Router();
 
 
   constructor(){
     const controller = new UserController();
 
-    this.router.get("/", isAuthenticated, controller.index)
-
-    this.router.post("/", controller.create)
-
+    this.router.use(isAuthenticated);
+    this.router.use(isAllowed([UserRole.BASIC, UserRole.PREMIUM]));
+    this.router.get("/", controller.index);
 
     //this.router.delete("/",isAuthenticated, userController.deleteAll)
   }

@@ -3,11 +3,11 @@ import {Router} from 'express';
 import AuthRoutes from './AuthRoutes';
 import UserRoutes from './UserRoutes';
 
-import IRoutes from './IRoutes';
+import {IRoutes} from '../interfaces';
 
 export default class GlobalRoutes implements IRoutes{
-  public router = Router();;
-  public path = '/';
+  readonly router = Router();;
+  readonly path = '/';
 
   constructor(){
     this.addRoutes([

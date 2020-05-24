@@ -5,7 +5,7 @@ services:
     image: postgres
     
     env_file: 
-      - ./.env
+      - docker.env
 
     ports:
       - "5432:5432"
@@ -16,9 +16,10 @@ services:
       
   db_pgadmin:
     image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: "italo85199@gmail.com"
-      PGADMIN_DEFAULT_PASSWORD: "pgadmin"
+
+    env_file: 
+      - docker.env
+     
     ports:
       - "15432:80"
     depends_on:

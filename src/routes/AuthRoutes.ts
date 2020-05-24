@@ -2,11 +2,11 @@ import {Router, Request, Response} from 'express';
 
 import AuthController from '../controllers/AuthController';
 
-import IRoutes from './IRoutes';
+import {IRoutes} from '../interfaces';
 
 export default class AuthRoutes implements IRoutes {
-  public path = "/auth";
-  public router = Router();
+  readonly path = "/auth";
+  readonly router = Router();
 
   constructor(){
 
