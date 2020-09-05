@@ -23,7 +23,10 @@ export default class AuthController {
         }
       );
 
-      return res.json(userCreated);
+      return res.json({user: {
+        name: userCreated.name,
+        email: userCreated.email
+      }});
     } catch (error) {
 
       return res.status(404).json(error);
@@ -49,7 +52,10 @@ export default class AuthController {
         }
       );
 
-      return res.json(user);
+      return res.json({user: {
+        name: user.name,
+        email: user.email
+      }});
     } catch (error) {
       return res.status(400).json(error);
     }

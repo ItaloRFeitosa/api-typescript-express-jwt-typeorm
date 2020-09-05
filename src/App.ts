@@ -23,7 +23,7 @@ export default class App {
 
   private initializeMiddlewares(){
 
-    this.app.use(cors())
+    this.app.use(cors( {credentials: true, origin: 'http://localhost:3000'}))
       .use(helmet())
       .use(cookieParser())
       .use(express.json());
